@@ -9,7 +9,21 @@ A simple Emoji downloader for CLI
 
 ## Installation
 
-Copy and paste `emojidl.sh` contents into your .bashrc or .zshrc file. It's a simple function.
+Copy and paste `emojidl.sh` contents (or following snippet) into your .bashrc or .zshrc file. It's a simple function:
+
+```bash
+emojidl() {
+curl -kLss "https://emojipedia.org/search/?q=$1" | grep "on Apple" | grep " 2x" | sed -n 's/.*<img src="\([^"]*\)".*/\1/p' | xargs wget
+}
+```
+
+## Oneliner Explaination
+
+- Makes a curl request to `https://emojipedia.org/search/?q=<EMOJI>`
+- Finds the lines including "on Apple" text
+- Finds "2x" ones
+- Parses the line using `sed` to extract the src attribute
+- Uses `wget` to download the extracted URL
 
 ## Usage
 
