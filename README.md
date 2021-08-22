@@ -1,4 +1,4 @@
-# Emoji Downloader
+# ⏬ Emoji Downloader
 
 A simple Emoji downloader for CLI
 
